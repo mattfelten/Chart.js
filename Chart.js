@@ -1251,7 +1251,13 @@ window.Chart = function(context){
             }
 
                 if(defaults.scaleSteps != null) {
-                    numberOfSteps = config.scaleSteps;
+                    numberOfSteps = defaults.scaleSteps;
+
+                    // Fix stepValue if you only want a set number of steps
+                    if (defaults.scaleStepWidth == null) {
+                        stepValue = graphRange / numberOfSteps;
+                    }
+
                 } else {
                     numberOfSteps = Math.round(graphRange / stepValue);
 
